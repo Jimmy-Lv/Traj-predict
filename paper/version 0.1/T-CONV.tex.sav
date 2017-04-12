@@ -1,6 +1,5 @@
 \documentclass[sigconf]{acmart}
-
-\usepackage{booktabs} % For formal tables
+%\usepackage{booktabs} % For formal tables
 \usepackage{times}
 \usepackage{helvet}
 \usepackage{courier}
@@ -8,14 +7,14 @@
 \usepackage{graphicx}
 \usepackage{subfigure}
 \usepackage{amssymb}
-\frenchspacing
-\setlength{\pdfpagewidth}{8.5in}
-\setlength{\pdfpageheight}{11in}
-\pdfinfo{
-/Title (Modeling Trajectory as Image: Convolutional Neural Networks for Multi-scale Taxi Trajectory Prediction )
+%\frenchspacing
+%\setlength{\pdfpagewidth}{8.5in}
+%\setlength{\pdfpageheight}{11in}
+%\pdfinfo{
+%/Title (Modeling Trajectory as Image)
 %/Author (Jianming Lv)
-}
-
+%}
+\pagestyle{empty}                   %≤ª…Ë÷√“≥√º“≥Ω≈
 \setcounter{secnumdepth}{0}
  \begin{document}
 % The file aaai.sty is the style file for AAAI Press
@@ -28,7 +27,7 @@
 %}
 \nocite{*}
 \begin{abstract}
-Precise destination prediction of Taxi trajectories can benefit both efficient schedule of taxies and accurate advertisement for customers. Traditional prediction algorithms treat trajectories as one-dimensional sequences of spatial points and process them in one single predefined spatial scale. In this paper, we show that taxi trajectories can exhibit different patterns in different spatial scales, and the combination of multi-scale patterns can improve the accuracy of prediction. Based on this analysis, we propose T-CONV, which models trajectories as images and adopts multi-layer convolutional neural networks to combine multi-scale trajectory patterns to achieve higher accuracy. Furthermore, in order to solve the sparsity problem of trajectories, we integrate multiple local convolutional fields in T-CONV to capture important specific areas of trajectories. Comprehensive experiments based on real trajectory data show that T-CONV can achieve much better results than state-of-the-art methods.
+    Precise destination prediction of Taxi trajectories can benefit both efficient schedule of taxies and accurate advertisement for customers.In this paper, we propose T-CONV, a novel trajectory prediction algorithm, which models trajectories  as two-dimensional images and utilize multi-layer convolutional neural networks to extract multi-scale spatial patterns for high prediction accuracy. Compared with the traditional algorithms which process trajectories as one-dimensional sequences of spatial points, the image based model of T-CONV is easier to capture two-dimensional local spatial features of trajectories in different scales. Furthermore, in order to solve the sparsity problem of trajectories, we integrate multiple local convolutional fields in T-CONV to capture important specific areas of trajectories. Comprehensive experiments based on real trajectory data show that T-CONV can achieve much better results than state-of-the-art methods.
 \end{abstract}
 
 \keywords{Trajectory, Convolutional Neural Network, Multi-scale}
@@ -39,16 +38,16 @@ Precise destination prediction of Taxi trajectories can benefit both efficient s
 
 Taxi has become one of the major transportation tools in big cities nowadays. For efficient schedule and security monitoring of taxis running in a city, the mobile GPS devices are broadly installed in most of taxis, which report the real-time trajectories of passengers to the supervise department.
 
-Analysis of the destinations of taxi trajectories can benefit a lot interesting applications, such as intelligent schedule of taxis and accurate advertisement. For example, if a taxi company knows exactly the destination of a running taxi, it can efficiently dispatch the demands near the destination to the taxi. However, most of the time, taxi drivers operating with an electronic dispatch system do not indicate the final destination of their current ride, so it is necessary to predict the destination of a running taxi based on historical trajectories.
+Analysis of the destinations of taxi trajectories can benefit a lot interesting applications, such as intelligent schedule of taxis and accurate advertisement. For example, if a taxi company knows exactly the destination of a running taxi, it can efficiently dispatch the demands near the destination to the taxi. Another example is about the taxi TV advertising, which shows advertisements in the displays deployed in taxis for passengers. Good understanding of the target of a trip may be helpful for making  proper recommendation for different passengers,e.g. showing  film posters in the taxi going to a cinema. However, most of the time, taxi drivers operating with an electronic dispatch system do not indicate the final destination of their current ride, so it is necessary to predict the destination of a running taxi based on historical trajectories.
 
 %On the other hand, if an advertisement company understands the destination of a passenger, e.g. a cinema, it can push some advertisement highly related to the destination such as some posts of newest films to the TV installed on the taxi.
 
 The recent event most related to this prediction problem is the ECML-PKDD competition \cite{kaggle2015}, which is set up to predict the destinations of taxi trajectories in Porto. The research \cite{de2015artificial}, which adopts MLP (multi-layer perception) and RNN (recurrent neural network) algorithms, wins the championship. Besides, recently proposed models \cite{xue2013destination,xue2015solving,citation-0}predict destination  by using Markov models to match query trajectories with historical records. \cite{chen2015predicting} clusters the moving objects according to their trajectories and make prediction according to the mobility patterns of similar objects.
 
 
-Most of existing researches model trajectories as  sequences of spatio-temporal points and process them in one single spatial scale. In this paper, we address that trajectories have distinct multi-scale properties.  In a micro scale, a trajectory can be observed with precise positions, while it is hard to discover the global trend of large spatial scope. On the contrast side, in a macro scale, the global trend of a trajectory can be easily revealed, while many details are lost to support accurate prediction. The combination of the patterns in different scales may capture the motion features more precisely and completely for better prediction.
+Most of existing researches model trajectories as  sequences of spatio-temporal points and process them in one single spatial scale. This kind of one-dimensional data structures are hard to explicitly reveal the two-dimensional spatial features of trajectories, e.g. curves, crossings, corners, and windings. These patterns are highly related to the structure of road networks, and may benefit better understanding of the state and destination of taxi trajectories.  Furthermore, we address that trajectories have distinct multi-scale properties.  In a micro scale, a trajectory can be observed with precise positions, while it is hard to discover the global trend of large spatial scope. On the contrast side, in a macro scale, the global trend of a trajectory can be easily revealed, while many details are lost to support accurate prediction. The combination of the patterns in different scales may capture the motion features more precisely and completely for better prediction.
 
-In this paper, we propose a novel prediction algorithm, T-CONV, which models trajectories from a different view to consider them as images and applies a multi-layer convolutional neural network (CNN)  to extract  multi-scale trajectory features for accurate prediction. Comprehensive experiments based on the real data of the ECML-PKDD contest\cite{kaggle2015} show that our model can achieve much better precision than the state-of-the-art algorithms.
+In this paper, we propose a novel prediction algorithm, T-CONV, which models trajectories from a different view to consider them as two-dimensional images and applies a multi-layer convolutional neural network (CNN)  to extract  multi-scale trajectory features for accurate prediction. Comprehensive experiments based on the real data of the ECML-PKDD contest\cite{kaggle2015} show that our model can achieve much better precision than the state-of-the-art algorithms.
 
 The main contributions of this paper are summarized as follows:
 
@@ -65,10 +64,7 @@ The main contributions of this paper are summarized as follows:
 \section{Related Work}
 In this section, we will introduce some research related to trajectory prediction.
 
-Most of the existing researches model a trajectory as a spatio-temporal sequence and predict the destination by matching the query trajectory with historical trajectories. Specifically, \cite{krumm2006predestination,wei2012constructing,ziebart2008navigate}  represents the map as a two-dimensional grid in a unified and fixed spatial scale, and all spatial points in one cell are considered as one location identified by the id of the cell. In this way, each trajectory can be modeled as a sequence of cell ids. These algorithms apply the Bayesian inference method to measure the probability of a given destination conditioned on the observed partial trajectory according to the statistics of the historical records. However, in real deployment, the sparsity problem of trajectories often makes it hard to find the historical trajectories exactly matching the query one. Simply adopting Bayesian inference as \cite{krumm2006predestination,wei2012constructing,ziebart2008navigate}   may return zero probability for all candidate destinations most of the time. To solve this problem, \cite{xue2013destination,xue2015solving}  decompose trajectories into sub-trajectories connecting two adjacent locations, and adopt first-orders Markov model to infer the probability of  all candidate destinations. \cite{citation-0}  extends the model to consider the difference between destinations and passing-by locations by adopting a absorbing Markov chain model. \cite{kim2007path}  utilizes the road network information and divides trajectories into road segments. The research aims to predict the future path of  a moving object by matching the query trajectory with historical trajectories on a road network.  \cite{chen2010system}  expresses a personal trajectory as a sequence of cells in a grid, and organize movement patterns in a pattern tree to support prediction.
-
-
-Most of the existing researches model a trajectory as a spatio-temporal sequence and predict the destination by matching the query trajectory with historical trajectories. Specifically, \cite{krumm2006predestination,wei2012constructing,ziebart2008navigate}  represents the map as a two-dimensional grid in a unified and fixed spatial scale, and all spatial points in one cell are considered as one location identified by the id of the cell. In this way, each trajectory can be modeled as a sequence of cell ids. These algorithms apply the Bayesian inference method to measure the probability of a given destination conditioned on the observed partial trajectory according to the statistics of the historical records. However, in real deployment, the sparsity problem of trajectories often makes it hard to find the historical trajectories exactly matching the query one. Simply adopting Bayesian inference as \cite{krumm2006predestination,wei2012constructing,ziebart2008navigate}   may return zero probability for all candidate destinations most of the time. To solve this problem, \cite{xue2013destination,xue2015solving}  decompose trajectories into sub-trajectories connecting two adjacent locations, and adopt first-orders Markov model to infer the probability of  all candidate destinations. \cite{citation-0}  extends the model to consider the difference between destinations and passing-by locations by adopting a absorbing Markov chain model. \cite{kim2007path}  utilizes the road network information and divides trajectories into road segments. The research aims to predict the future path of  a moving object by matching the query trajectory with historical trajectories on a road network.  \cite{chen2010system}  expresses a personal trajectory as a sequence of cells in a grid, and organize movement patterns in a pattern tree to support prediction.
+Most of the existing researches model a trajectory as a one-dimensional spatio-temporal sequence and predict the destination by matching the query trajectory with historical trajectories. Specifically, \cite{krumm2006predestination,wei2012constructing,ziebart2008navigate} represents the map as a two-dimensional grid in a unified and fixed spatial scale, and all spatial points in one cell are considered as one location identified by the id of the cell. In this way, each trajectory can be modeled as a sequence of cell ids. These algorithms apply the Bayesian inference method to measure the probability of a given destination conditioned on the observed partial trajectory according to the statistics of the historical records. However, in real deployment, the sparsity problem of trajectories often makes it hard to find the historical trajectories exactly matching the query one. Simply adopting Bayesian inference as \cite{krumm2006predestination,wei2012constructing,ziebart2008navigate}   may return zero probability for all candidate destinations most of the time. To solve this problem, \cite{xue2013destination,xue2015solving}  decompose trajectories into sub-trajectories connecting two adjacent locations, and adopt first-orders Markov model to infer the probability of  all candidate destinations. \cite{citation-0}  extends the model to consider the difference between destinations and passing-by locations by adopting a absorbing Markov chain model. \cite{kim2007path}  utilizes the road network information and divides trajectories into road segments. The research aims to predict the future path of  a moving object by matching the query trajectory with historical trajectories on a road network.  \cite{chen2010system}  expresses a personal trajectory as a sequence of cells in a grid, and organize movement patterns in a pattern tree to support prediction.
 
 
 Furthermore, clustering algorithms are commonly used techniques to overcome the sparsity problem and extract meaningful basic units in trajectories. \cite{chen2015predicting} clusters the moving objects according to their trajectories and makes prediction using the mobility patterns of similar objects.\cite{besse2016destination} clusters historical trajectories and uses the Gaussian mixture model to describe the distribution of spatial points in a trajectory cluster. Each query trajectory is assigned to multiple clusters and the mean of the destinations of these clusters is the predicted destination. \cite{alvarez2010trip} uses clustering algorithms to extract some important spatial points, named the support points, which are close to crossroads on trajectories. A HMM based algorithm is adopted to establish the relationship between support points and destinations. \cite{yang2014predicting} proposes a variant of the DBSCAN clustering algorithm to obtain stay points, and apply the variable order Markov Model to predict next locations of personal trajectories.
@@ -78,7 +74,7 @@ More recently, some neural network based algorithms \cite{de2015artificial} are 
 Most of above studies perform prediction based on the trajectory features extracted in one specific spatial scale. In the grid based models \cite{krumm2006predestination,wei2012constructing,ziebart2008navigate,xue2013destination}, the scale is determined by the density of the grid, which is usually predefined and unified in the systems. The clustering  based algorithms \cite{chen2015predicting,besse2016destination,alvarez2010trip,yang2014predicting} cluster the spatial points and trajectories based on their spatial distribution and perform the prediction based on the clusters, which form a kind of specific spatial scale and  keep unchanged during the prediction. On the other hand,  neural network based models\cite{de2015artificial}, trajectories are processed in  a finest granularity and prediction is conducted based on the spatial points, each of which is represented as a tuple of latitude and longitude.
 
 \section{Preliminaries}
-\subsection{Multi-scale analysis of trajectory}
+\subsection{Multi-scale Patterns of Trajectory}
 
 In this section, we analyze the multi-scale property of trajectories, and show the possibility of combining multi-scale trajectory features to achieve better understanding of motion patterns.
 
@@ -114,11 +110,17 @@ Fig.~1 illustrates a typical example of taxi trajectories in different scale. Th
 
 In a word, trajectories in small scale show micro local motion patterns but cause sparsity problem, while in macro scale they show global trend clearly but it is difficult to sense important local  changes. The combination of the trajectory patterns in multiple scale may be better than the existing single scale based methods to capture both of the micro and macro motion patterns for more accurate prediction.
 
+
 \section{T-CONV Models}
 \subsection{Image Based Modeling of Trajectory}
-In this section, we will present the image based model of trajectories, and offer a formal definition of the trajectory prediction problem.
 
-Like most of the grid-based preprocessing methods\cite{xue2013destination,krumm2006predestination,wei2012constructing,ziebart2008navigate}  of trajectories, we divide the map into a $M*M$ grid evenly as Fig.1(b), where $M$ is a predefined constant which denotes the highest resolution of the map. We use  $C_{mn}(1 \leq m,n \leq M)$ to denote the cell in the row $m$ and column $n$ of the grid. Any taxi trajectory $T_k$ can be denoted as a sequence of GPS points as $T_k = \{P_{k1},P_{k2},...\}$, where $P_{ki}(i \geq 1)$ is a GPS point of the trajectory. By mapping $T_k$ on the grid,  each GPS point $P_{ki}$ is assigned to a cell $C(m, n)(1 \leq m,n \leq M)$. In this way, we can  achieve a two-dimensional $M*M$ image $I_k$, where the value of the pixel $I_k(m , n)(1 \leq m,n \leq M)$ indicates the information about the GPS points assigned to the cell $C_{mn}$.  The image  $I_k$ is called as the \emph{trajectory image} of $T_k$ in this paper. The detailed definition of the pixel value is presented in the following sections. Different from traditional one-dimensional sequence based modeling of trajectory, the trajectory image illustrates more directly the distribution of the spatial points on the two-dimensional map.
+Most of the traditional trajectory processing algorithms model a trajectory as a sequence of spatial points like:
+\begin{eqnarray}
+T_k = \{P_{k1},P_{k2},...\}.
+\end{eqnarray}
+Here  $P_{ki}(i \geq 1)$ is a GPS point of the trajectory. This one-dimensional data structure cannot explicitly reveal the intrinsic two-dimensional local spatial structures of trajectories as showed in Fig.~1(a),  including  corners, curves, crossings, and windings, which are important patterns to understand the evolving trend of a trajectory and support precise prediction.
+
+In order to efficiently integrate the two-dimensional spatial features of trajectories, we model trajectories as images from different view. Like most of the grid-based preprocessing methods\cite{xue2013destination,krumm2006predestination,wei2012constructing,ziebart2008navigate}  of trajectories, we divide the map into a $M*M$ grid evenly as Fig.1(b), where $M$ is a predefined constant which denotes the highest resolution of the map. We use  $C_{mn}(1 \leq m,n \leq M)$ to denote the cell in the row $m$ and column $n$ of the grid. By mapping a trajectory $T_k$ on the grid,  each GPS point $P_{ki}$ is assigned to a cell $C(m, n)(1 \leq m,n \leq M)$. In this way, we can  achieve a two-dimensional $M*M$ image $I_k$, where the value of the pixel $I_k(m , n)(1 \leq m,n \leq M)$ indicates the information about the GPS points assigned to the cell $C_{mn}$.  The image  $I_k$ is called as the \emph{trajectory image} of $T_k$ in this paper. The detailed definition of the pixel value is presented in the following sections. Different from traditional one-dimensional sequence based modeling of trajectory, the trajectory image illustrates more directly the distribution of the spatial points on the two-dimensional map.
 
 Based on this image based presentation of trajectories, the prediction problem can be formalized as follows: given a trajectory image $I_k$ of a running taxi starting from $P_{k1}$, it is required to predict the latitude and longitude of the destination of  the taxi.
 
@@ -146,7 +148,7 @@ The combination of the convolution and max-pooling operations can be applied to 
 \begin{figure}
 \centering
 {
-\begin{minipage}[b]{0.45\textwidth}
+\begin{minipage}[b]{0.5\textwidth}
 \includegraphics[width=1\textwidth]{./fig/cnn-new.pdf}
 \end{minipage}
 }
@@ -165,7 +167,7 @@ Here $(e_i)$ is an activation output of the hidden layer. Moreover, the meta dat
  \begin{figure}
 \centering
 {
-\begin{minipage}[b]{0.25\textwidth}
+\begin{minipage}[b]{0.4\textwidth}
 \includegraphics[width=1\textwidth]{./fig/Doc10.pdf}
 \end{minipage}
 }
@@ -176,7 +178,7 @@ Here $(e_i)$ is an activation output of the hidden layer. Moreover, the meta dat
 \begin{figure}
 \centering
 {
-\begin{minipage}[b]{0.25\textwidth}
+\begin{minipage}[b]{0.4\textwidth}
 \includegraphics[width=1\textwidth]{./fig/Doc11.pdf}
 \end{minipage}
 }
@@ -331,12 +333,12 @@ We test the performance of  T-CONV-local  with different combinations of  $M$ an
 \begin{figure}
 \centering
 \subfigure[]{
-\begin{minipage}[b]{0.22\textwidth}
+\begin{minipage}[b]{0.4\textwidth}
 \includegraphics[width=1\textwidth]{./fig/Doc8.pdf}
 \end{minipage}
 }
 \subfigure[]{
-\begin{minipage}[b]{0.22\textwidth}
+\begin{minipage}[b]{0.4\textwidth}
 \includegraphics[width=1\textwidth]{./fig/Doc9.pdf}
 \end{minipage}
 }
@@ -349,7 +351,7 @@ We test the performance of  T-CONV-local  with different combinations of  $M$ an
 
 
 \section{ Conclusions}
-In this paper, we present the convolutional neural network based models, T-CONV, to predict the destinations of taxi trajectories. Different from traditional research which processes trajectories in one single scale, T-CONV model trajectories as images and  combine multi-scale trajectory patterns through multi-layer convolution operations to achieve better prediction accuracy. Specifically, the effectiveness of the T-CONV-local model shows that the multiple local convolutional fields focusing on important local areas can perform much better than the T-CONV-global model which conducts convolution over the whole trajectory image.
+In this paper, we present the convolutional neural network based model, T-CONV, to predict the destinations of taxi trajectories. Different from traditional research which models trajectories as one-dimensional sequences in one single scale, T-CONV models trajectories as two-dimensional images and  combines multi-scale trajectory patterns through multi-layer convolution operations to achieve better prediction accuracy. Specifically, the effectiveness of the T-CONV-local model shows that the multiple local convolutional fields focusing on important local areas can perform much better than the T-CONV-global model which conducts convolution over the whole trajectory image.
 
 
 \bibliographystyle{aaai}
