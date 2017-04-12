@@ -1,0 +1,149 @@
+\begin{thebibliography}{}
+
+\bibitem[\protect\citeauthoryear{Alvarez-Garcia \bgroup et al\mbox.\egroup
+  }{2010}]{alvarez2010trip}
+Alvarez-Garcia, J.~A.; Ortega, J.~A.; Gonzalez-Abril, L.; and Velasco, F.
+\newblock 2010.
+\newblock Trip destination prediction based on past gps log using a hidden
+  markov model.
+\newblock {\em Expert Systems with Applications} 37(12):8166--8171.
+
+\bibitem[\protect\citeauthoryear{Besse \bgroup et al\mbox.\egroup
+  }{2016}]{besse2016destination}
+Besse, P.~C.; Guillouet, B.; Loubes, J.-M.; and Royer, F.
+\newblock 2016.
+\newblock Destination prediction by trajectory distribution based model.
+\newblock {\em arXiv preprint arXiv:1605.03027}.
+
+\bibitem[\protect\citeauthoryear{Chen, Liu, and Yu}{2015}]{chen2015predicting}
+Chen, M.; Liu, Y.; and Yu, X.
+\newblock 2015.
+\newblock Predicting next locations with object clustering and trajectory
+  clustering.
+\newblock In {\em Pacific-Asia Conference on Knowledge Discovery and Data
+  Mining},  344--356.
+\newblock Springer.
+
+\bibitem[\protect\citeauthoryear{Chen, Lv, and Chen}{2010}]{chen2010system}
+Chen, L.; Lv, M.; and Chen, G.
+\newblock 2010.
+\newblock A system for destination and future route prediction based on
+  trajectory mining.
+\newblock {\em Pervasive and Mobile Computing} 6(6):657--676.
+
+\bibitem[\protect\citeauthoryear{de Br{\'e}bisson \bgroup et al\mbox.\egroup
+  }{2015}]{de2015artificial}
+de~Br{\'e}bisson, A.; Simon, {\'E}.; Auvolat, A.; Vincent14, P.; and Bengio14,
+  Y.
+\newblock 2015.
+\newblock Artificial neural networks applied to taxi destination prediction.
+\newblock {\em ECML-PKDD-DCs}.
+
+\bibitem[\protect\citeauthoryear{Hochreiter and
+  Schmidhuber}{1997}]{hochreiter1997long}
+Hochreiter, S., and Schmidhuber, J.
+\newblock 1997.
+\newblock Long short-term memory.
+\newblock {\em Neural computation} 9(8):1735--1780.
+
+\bibitem[\protect\citeauthoryear{Kaggle}{2015}]{kaggle2015}
+Kaggle.
+\newblock 2015.
+\newblock Kaggle competition.
+\newblock https://www.kaggle.com/c/pkdd-15-predict-taxi-service-trajectory-i.
+
+\bibitem[\protect\citeauthoryear{Kim \bgroup et al\mbox.\egroup
+  }{2007}]{kim2007path}
+Kim, S.-W.; Won, J.-I.; Kim, J.-D.; Shin, M.; Lee, J.; and Kim, H.
+\newblock 2007.
+\newblock Path prediction of moving objects on road networks through analyzing
+  past trajectories.
+\newblock In {\em International Conference on Knowledge-Based and Intelligent
+  Information and Engineering Systems},  379--389.
+\newblock Springer.
+
+\bibitem[\protect\citeauthoryear{Krizhevsky, Sutskever, and
+  Hinton}{2012}]{krizhevsky2012imagenet}
+Krizhevsky, A.; Sutskever, I.; and Hinton, G.~E.
+\newblock 2012.
+\newblock Imagenet classification with deep convolutional neural networks.
+\newblock In {\em Advances in neural information processing systems},
+  1097--1105.
+
+\bibitem[\protect\citeauthoryear{Krumm and
+  Horvitz}{2006}]{krumm2006predestination}
+Krumm, J., and Horvitz, E.
+\newblock 2006.
+\newblock Predestination: Inferring destinations from partial trajectories.
+\newblock In {\em International Conference on Ubiquitous Computing},  243--260.
+\newblock Springer.
+
+\bibitem[\protect\citeauthoryear{LeCun \bgroup et al\mbox.\egroup
+  }{1998}]{lecun1998gradient}
+LeCun, Y.; Bottou, L.; Bengio, Y.; and Haffner, P.
+\newblock 1998.
+\newblock Gradient-based learning applied to document recognition.
+\newblock {\em Proceedings of the IEEE} 86(11):2278--2324.
+
+\bibitem[\protect\citeauthoryear{Li \bgroup et al\mbox.\egroup
+  }{2016}]{citation-0}
+Li, X.; Li, M.; Gong, Y.-J.; Zhang, X.-L.; and Yin, J.
+\newblock 2016.
+\newblock T-desp: Destination prediction based on big trajectory data.
+\newblock {\em IEEE Transactions on Intelligent Transportation Systems}
+  17(8):2344 -- 2354.
+
+\bibitem[\protect\citeauthoryear{Wei, Zheng, and
+  Peng}{2012}]{wei2012constructing}
+Wei, L.-Y.; Zheng, Y.; and Peng, W.-C.
+\newblock 2012.
+\newblock Constructing popular routes from uncertain trajectories.
+\newblock In {\em Proceedings of the 18th ACM SIGKDD international conference
+  on Knowledge discovery and data mining},  195--203.
+\newblock ACM.
+
+\bibitem[\protect\citeauthoryear{Xue \bgroup et al\mbox.\egroup
+  }{2013}]{xue2013destination}
+Xue, A.~Y.; Zhang, R.; Zheng, Y.; Xie, X.; Huang, J.; and Xu, Z.
+\newblock 2013.
+\newblock Destination prediction by sub-trajectory synthesis and privacy
+  protection against such prediction.
+\newblock In {\em Data Engineering (ICDE), 2013 IEEE 29th International
+  Conference on},  254--265.
+\newblock IEEE.
+
+\bibitem[\protect\citeauthoryear{Xue \bgroup et al\mbox.\egroup
+  }{2015}]{xue2015solving}
+Xue, A.~Y.; Qi, J.; Xie, X.; Zhang, R.; Huang, J.; and Li, Y.
+\newblock 2015.
+\newblock Solving the data sparsity problem in destination prediction.
+\newblock {\em The VLDB Journal} 24(2):219--243.
+
+\bibitem[\protect\citeauthoryear{Yang \bgroup et al\mbox.\egroup
+  }{2014}]{yang2014predicting}
+Yang, J.; Xu, J.; Xu, M.; Zheng, N.; and Chen, Y.
+\newblock 2014.
+\newblock Predicting next location using a variable order markov model.
+\newblock In {\em Proceedings of the 5th ACM SIGSPATIAL International Workshop
+  on GeoStreaming},  37--42.
+\newblock ACM.
+
+\bibitem[\protect\citeauthoryear{Zeiler and
+  Fergus}{2014}]{zeiler2014visualizing}
+Zeiler, M.~D., and Fergus, R.
+\newblock 2014.
+\newblock Visualizing and understanding convolutional networks.
+\newblock In {\em European Conference on Computer Vision},  818--833.
+\newblock Springer.
+
+\bibitem[\protect\citeauthoryear{Ziebart \bgroup et al\mbox.\egroup
+  }{2008}]{ziebart2008navigate}
+Ziebart, B.~D.; Maas, A.~L.; Dey, A.~K.; and Bagnell, J.~A.
+\newblock 2008.
+\newblock Navigate like a cabbie: Probabilistic reasoning from observed
+  context-aware behavior.
+\newblock In {\em Proceedings of the 10th international conference on
+  Ubiquitous computing},  322--331.
+\newblock ACM.
+
+\end{thebibliography}

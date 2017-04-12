@@ -1,0 +1,22 @@
+
+1.Useful. add some detailed background about trajectory prediction in the first section. mention that the application is used to predict the destination of a running taxi.
+ 
+
+2.CNN. add some description about CNN in the prelimiliar section. add more description. 
+
+
+3.Image vs seq. strenthen that the difference between the sequence and images. one dimensional sequence is not good for capturing some local structure, trend, density. and also multi-scale. one dimensional -> two dimensional 
+
+add the sequence in the Fig.1 to descibe the difference.
+
+section 'multi-scale' -> traditional one-dimensional sequence analysis
+donot to focus on the different patterns of the trajectory, we should focus on the one-dimention to two dimensional problem.
+
+
+
+4.Model detail. some formula about the visulization deconvlution.
+
+5. Discussion about the local model and global model. and discuss why localmodel is more efficient to capture the patterns.
+
+
+6. Sensibility of parameters. The changing the basic structure does not violate the whole structure. the grid size 
